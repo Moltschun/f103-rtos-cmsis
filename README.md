@@ -30,3 +30,17 @@ An RTOS solves all of the above preblems. It provides us with:
 > 2. **Prioritization** - Ensuring that critical tasks always interrupt less important ones.
 > 3. **Synchronization and data sharing** - Mechanisms (Mutexes, Semaphores, Queues) for safe data sharing between tasks.
 > 4. **Time management** - Time Management: Precise control over task execution and timing.
+>
+--- 
+
+## Key Concepts in RTOS
+
+# **Task**
+> [!NOTE]
+> This is the fundamental unit of an RTOS. It's essentially a while(1) loop, but it performs a single task/action.
+What's also important to know:
+1. Priorities are numerical values ​​that determine the importance of a task. The higher the priority, the sooner the task will be executed.
+2. The stack is a separate memory area for local variables and function context.
+3. Task states exist in four types: Running (a task that is already running on the CPU), Ready (a task that is ready to be executed as soon as the CPU becomes available), Blocked (a task that is temporarily blocked because an event has not yet occurred), and Suspended (a task that has been explicitly suspended by another task or by the scheduler itself).
+
+
