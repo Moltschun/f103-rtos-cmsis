@@ -42,7 +42,43 @@ What's also important to know:
 1. Priorities are numerical values ​​that determine the importance of a task. The higher the priority, the sooner the task will be executed.
 2. The stack is a separate memory area for local variables and function context.
 3. Task states exist in four types: Running (a task that is already running on the CPU), Ready (a task that is ready to be executed as soon as the CPU becomes available), Blocked (a task that is temporarily blocked because an event has not yet occurred), and Suspended (a task that has been explicitly suspended by another task or by the scheduler itself).
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8f349154-1b7d-4303-95a0-2931b797c2e9" />
 
+### Creating an Issue
+
+```C
+void vMyTaskFunction(void *pvParameters)
+{
+    for (;;) {
+        // Doing useful work
+        // ...
+        vTaskDelay(pdMS_TO_TICKS(100)); // Blocking for 100 ms
+    }
+}
+
+// Creating a task from the main() function or another task
+void main(void)
+{
+    // Creating a task
+    BaseType_t xReturned = xTaskCreate(
+                        vMyTaskFunction,    // Pointer to the task function
+                        "MyTask",           // Task name (for debugging)
+                        configMINIMAL_STACK_SIZE, // Stack size in words
+                        NULL,               // Parameter passed to the task
+                        tskIDLE_PRIORITY + 1,  // Task priority
+                        NULL );             // Task handle (can be used for management)
+
+    if (xReturned == pdPASS) {
+        // The task was successfully created
+    }
+
+    // Running the scheduler - The CPU is now controlled by RTOS
+    vTaskStartScheduler();
+
+    // If the scheduler is running successfully, we will never return here.
+    for (;;) {}
+}
+```
 ---
 
 # **Scheduler**
@@ -68,3 +104,5 @@ And the last thing worth talking about: The main points related to priorities.
 > 3. If two tasks have the same priority, the scheduler allows them to work in turn. Each receives one quantum of time
 > (usually 1 tick = 1 ms).
 >
+
+--- 
