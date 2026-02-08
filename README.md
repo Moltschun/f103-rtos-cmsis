@@ -85,7 +85,7 @@ void main(void)
 > [!NOTE]
 > This is one of the important components of the OS. It manages the tasks that we set ourselves, determining which of them will receive processor time at the moment.
 
-How does the Scheduler know when it's time to switch tasks? It needs his own metronome.
+How does the Scheduler know when it's time to switch tasks? It needs his own metronome
 > [!NOTE]
 > **SysTick (System Tick)** is a hardware timer (in the Cortex-M core) that generates an interrupt with a fixed
 > frequency (usually 1000 Hz, i.e. once every 1 ms).
@@ -106,3 +106,4 @@ And the last thing worth talking about: The main points related to priorities.
 >
 
 --- 
+
